@@ -2,6 +2,8 @@ package com.tt.app;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class workWithFile {
@@ -30,20 +32,29 @@ public class workWithFile {
 	public void readFile(String filePath){
 		//filePath = "testData/weightWatcher.txt";
 	    File file = new File(filePath);
+	    List<String> fileContent = new ArrayList<String>();
 
 	    try {
 
-	        Scanner sc = new Scanner(file);
+	        Scanner sc = new Scanner(file).useDelimiter("\\s*-\\s*|,");
 
 	        while (sc.hasNextLine()) {
 	            String i = sc.next();
-	            System.out.println(i);
-	        }
+	            fileContent.add(i); 
+	           //System.out.println(i);
+	        }//end of while
+	        
+		    String[] tempsArray = fileContent.toArray(new String[0]);
+
+		    for (String s : tempsArray) {
+		      System.out.println(s);
+		    }// end of for
 	        sc.close();
-	    } 
+	    }// end of try 
 	    catch (FileNotFoundException e) {
 	        e.printStackTrace();
 	    }//end of catch
-	 }//end of readFile
+	   // System.out.println(fileContent);
+	 }//end of method readFile
 
 }//end of class
