@@ -19,8 +19,8 @@ public class weightWatchers {
 	@BeforeTest
 	public void launchWeb(){
 		driver = new FirefoxDriver();
-		//driver.get("file:///Users/mahbubsiddique/Documents/WeightWatchers.html");
-		driver.get("testdata/WeightWatchers.html");
+		driver.get("file:///Users/mahbubsiddique/Documents/WeightWatchers.html");
+		//driver.get("testdata/WeightWatchers.html");
 	}
 	@AfterTest
 	public void closeWeb(){
