@@ -1,6 +1,7 @@
 package com.tt.app;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -18,7 +19,8 @@ public class weightWatchers {
 	@BeforeTest
 	public void launchWeb(){
 		driver = new FirefoxDriver();
-		driver.get("file:///Users/mahbubsiddique/Documents/WeightWatchers.html");
+		//driver.get("file:///Users/mahbubsiddique/Documents/WeightWatchers.html");
+		driver.get("testdata/WeightWatchers.html");
 	}
 	@AfterTest
 	public void closeWeb(){
@@ -35,22 +37,28 @@ public class weightWatchers {
 	
 	@Test(priority=2)
 	public void allFoodIntoMap(){
-		//HashMap<String,String> map=new HashMap<String,String>();
-		HashMap<List<WebElement>,List<WebElement>> map=new HashMap<List<WebElement>,List<WebElement>>();
-//		String foodName = driver.findElement(By.xpath("//span[@ng-bind='food.name'][1]")).getText();
-//		String foodServe = driver.findElement(By.xpath("//span[@ng-bind='food._servingDesc'][1]")).getText();
-//		map.put(foodName, foodServe);
+		
+		HashMap<String,List<String>> map=new HashMap<String,List<String>>();
 
 		List<WebElement> fn = driver.findElements(By.xpath("//span[@ng-bind='food.name']"));
+		//System.out.println(fn);
 		List<WebElement> fs = driver.findElements(By.xpath("//span[@ng-bind='food._servingDesc']"));
-//		for(WebElement e : fn) {
-//			  System.out.println(e.getText());
-//			}
+		//System.out.println(fs);
+		//System.out.println("Total number of food name: "+fn.size());
+		//System.out.println("Total number of food serving: "+fs.size());
 		
+		Iterator<WebElement> iter = fn.iterator();
+		Iterator<WebElement> iter1 = fs.iterator();
 		
-		for (Entry <List<WebElement>, List<WebElement>> entry : map.entrySet()) {
-		    System.out.println("Food Name = " + entry.getKey() + ", Food Serving = " + entry.getValue());
-		}
+		while(iter.hasNext() && iter1.hasNext()){
+			WebElement item = iter.next();
+			String foodName = item.getText();
+			System.out.println("Food Name: "+foodName);	
+			WebElement item1 = iter1.next();
+			String foodServing = item1.getText();
+			System.out.println("Food Serving: "+foodServing);	
+		}//end of while
+			
 	}//end of allFoodIntoMap
 
 }
