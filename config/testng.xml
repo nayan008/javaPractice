@@ -3,7 +3,7 @@
 <suite name="weightWathers" verbose="1" > 
   <test name="Regression1">
     <packages>
-      <package name="com.tt.app" />
+      <package name="com.tt.test" />
    </packages>
   </test>
 </suite>
