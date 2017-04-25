@@ -38,7 +38,7 @@ public class weightWatchers {
 	@Test(priority=2)
 	public void allFoodIntoMap(){
 		
-		HashMap<String,List<String>> map=new HashMap<String,List<String>>();
+		HashMap<String,String> map1=new HashMap<String,String>();
 
 		List<WebElement> fn = driver.findElements(By.xpath("//span[@ng-bind='food.name']"));
 		//System.out.println(fn);
@@ -49,15 +49,21 @@ public class weightWatchers {
 		
 		Iterator<WebElement> iter = fn.iterator();
 		Iterator<WebElement> iter1 = fs.iterator();
-		
+				
 		while(iter.hasNext() && iter1.hasNext()){
+			//web element of food name
 			WebElement item = iter.next();
+			//Retrieve the value of the web element
 			String foodName = item.getText();
-			System.out.println("Food Name: "+foodName);	
+			//web element of 
 			WebElement item1 = iter1.next();
 			String foodServing = item1.getText();
-			System.out.println("Food Serving: "+foodServing);	
+			//store the values in a hash map
+			map1.put(foodName, foodServing);	
 		}//end of while
+		System.out.println("===============================================");
+		System.out.println(map1);
+		System.out.println("===============================================");
 			
 	}//end of allFoodIntoMap
 
