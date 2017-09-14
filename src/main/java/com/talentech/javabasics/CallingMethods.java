@@ -1,6 +1,6 @@
 package com.talentech.javabasics;
 
-public class OopBasics {
+public class CallingMethods {
 
 	public static void main(String[] args) {
 		//Creating Object a of Arithmetics Class
