@@ -14,11 +14,11 @@ public class childClass1 extends baseClass {
 		obj1.div();
 	}
 	
-	public void mul(){
+	private void mul(){
 		System.out.println("This is child class and mul is 2500");
 	}
 
-	public void div(){
+	private void div(){
 		System.out.println("This is child class and div is 50");
 	}
 }
